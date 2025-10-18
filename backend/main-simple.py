@@ -69,6 +69,10 @@ class Query(BaseModel):
 def read_root():
     return {"message": "Welcome to the AI Product Recommendation API"}
 
+@app.get("/test")
+def test_endpoint():
+    return {"message": "Backend is working!", "data_loaded": df is not None}
+
 @app.post("/recommend")
 async def get_recommendations(query: Query):
     if df is None:
