@@ -21,7 +21,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],  # Allow all origins for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -53,7 +53,7 @@ def simulate_cv_model(product_details: dict) -> str:
 # --- 4. LOAD MODELS & DATA AT STARTUP ---
 try:
     print("Loading data and models...")
-    df = pd.read_csv('../data/furniture_dataset.csv')
+    df = pd.read_csv('data/furniture_dataset.csv')
     
     # Re-apply cleaning steps
     df['brand'] = df['brand'].fillna('Unknown Brand')

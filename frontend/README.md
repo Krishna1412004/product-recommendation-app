@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# AI Furniture Recommendation & Analytics App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a full-stack web application built over two days that uses multiple AI domains (ML, NLP, GenAI, and simulated CV) to provide furniture recommendations and display product analytics. It was developed to demonstrate skills in integrating advanced AI with full-stack development.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+* **AI-Powered Recommendations**: Users can describe the furniture they want in a conversational manner, and the app provides semantically similar products using text embeddings and a vector database.
+* **Generative Descriptions**: Each recommended product comes with a unique, AI-generated creative description using Groq's `llama-3.1-8b-instant` model, orchestrated via LangChain.
+* **Product Analytics**: A dedicated page shows key metrics about the product dataset, such as top brands, top materials, and price distribution statistics.
+* **Simulated Computer Vision**: A mock CV model predicts the product category (e.g., "Seating", "Storage") based on keywords in the product's text data, fulfilling the CV requirement.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+* **Backend**: FastAPI
+* **Frontend**: React
+* **Vector Database**: Pinecone
+* **AI Integration**: LangChain
+* **AI Models**:
+    * **Embeddings (NLP)**: `sentence-transformers/all-MiniLM-L6-v2` via HuggingFace
+    * **Generative AI (GenAI)**: `llama-3.1-8b-instant` via Groq API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Setup and Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Python 3.10+
+* Node.js and npm
+* A Pinecone API Key
+* A Groq API Key
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the Repository
 
-### `npm run eject`
+```bash
+git clone [https://github.com/Krishna1412004/product-recommendation-app.git](https://github.com/Krishna1412004/product-recommendation-app.git)
+cd product-recommendation-app
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+### 2. Backend Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# Navigate to the backend folder
+cd backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Create and activate a virtual environment
+python -m venv venv
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Install dependencies from the requirements file
+pip install -r requirements.txt
 
-## Learn More
+# Create a .env file
+# In the backend/ directory, create a new file named .env and add your API keys:
+# PINECONE_API_KEY="your_pinecone_api_key_here"
+# GROQ_API_KEY="your_groq_api_key_here"
+```
+### 3. Frontend Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# Navigate to the frontend folder from the root directory
+cd frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Install dependencies
+npm install
+```
+---
 
-### Code Splitting
+## How to Run the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+You will need two separate terminals to run the application.
 
-### Analyzing the Bundle Size
+### 1. Run the Backend Server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **Terminal 1:** Navigate to the `backend/` directory and ensure your virtual environment is active.
+* Run the FastAPI server:
 
-### Making a Progressive Web App
+    ```bash
+    uvicorn main:app --reload
+    ```
+* The backend will be running at `http://127.0.0.1:8000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2. Run the Frontend App
 
-### Advanced Configuration
+* **Terminal 2:** Navigate to the `frontend/` directory.
+* Start the React development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    ```bash
+    npm start
+    ```
+* The application will open automatically in your browser at `http://localhost:3000`.
+  ---
 
-### Deployment
+## Project Deliverables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This repository contains all the required deliverables:
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.  **Frontend (React App)** in the `/frontend` directory.
+2.  **Backend (FastAPI App)** in the `/backend` directory.
+3.  **Data Analytics Notebook** (`Data_Analytics.ipynb`) in the `/notebooks` directory.
+4.  **Model Training Notebook** (`Model_Training.ipynb`) in the `/notebooks` directory.
+5.  **This README.md file** with detailed setup and usage instructions.

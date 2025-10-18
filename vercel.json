@@ -1,24 +1,40 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "backend/main.py",
-        "use": "@vercel/python"
-      },
-      {
-        "src": "frontend/package.json",
-        "use": "@vercel/static-build",
-        "config": { "distDir": "build" }
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/main.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
       }
-    ],
-    "rewrites": [
-      {
-        "source": "/api/(.*)",
-        "destination": "/backend/main.py"
-      },
-      {
-        "source": "/(.*)",
-        "destination": "/frontend/build/index.html"
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
       }
-    ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/main.py"
+    },
+    {
+      "src": "/recommend",
+      "dest": "/backend/main.py"
+    },
+    {
+      "src": "/analytics",
+      "dest": "/backend/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/build/index.html"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": "backend"
   }
+}
