@@ -1,0 +1,9 @@
+# Optimized requirements for Vercel deployment
+fastapi==0.119.0
+uvicorn==0.37.0
+pydantic==2.12.3
+python-dotenv==1.1.1
+pandas==2.3.3
+numpy==2.3.4
+httpx==0.28.1
+requests==2.32.5
