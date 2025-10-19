@@ -2,37 +2,30 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/main-simple.py",
+      "src": "api/*.py",
       "use": "@vercel/python"
     },
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
+      "src": "frontend/build/**",
+      "use": "@vercel/static"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/main-simple.py"
+      "src": "/recommend",
+      "dest": "/api/recommend.py"
     },
     {
-      "source": "/recommend",
-      "destination": "/backend/main-simple.py"
+      "src": "/analytics", 
+      "dest": "/api/analytics.py"
     },
     {
-      "source": "/analytics", 
-      "destination": "/backend/main-simple.py"
+      "src": "/test",
+      "dest": "/api/test.py"
     },
     {
-      "source": "/test",
-      "destination": "/backend/main-simple.py"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/frontend/build/index.html"
+      "src": "/(.*)",
+      "dest": "/frontend/build/$1"
     }
   ]
 }
