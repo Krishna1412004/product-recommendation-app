@@ -2,26 +2,25 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/*.py",
+      "src": "backend/main.py",
       "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/recommend",
-      "dest": "/api/recommend.py"
+      "source": "/api/(.*)",
+      "destination": "/backend/main.py"
     },
     {
-      "src": "/analytics", 
-      "dest": "/api/analytics.py"
-    },
-    {
-      "src": "/test",
-      "dest": "/api/test.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/build/index.html"
+      "source": "/(.*)",
+      "destination": "/frontend/build/index.html"
     }
   ]
 }

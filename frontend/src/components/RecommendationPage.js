@@ -41,7 +41,7 @@ const RecommendationPage = () => {
     setHasSearched(true);
 
     try {
-      const API_URL = 'http://127.0.0.1:8000/recommend';
+      const API_URL = '${process.env.REACT_APP_API_URL}/recommend';
       const response = await axios.post(API_URL, { prompt });
       setRecommendations(response.data.recommendations);
     } catch (err) {
