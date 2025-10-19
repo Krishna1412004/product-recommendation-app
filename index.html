@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Product Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4caf50;
+        }
+        .api-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .api-link {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .api-link:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 AI Product Recommendation System</h1>
+        
+        <div class="status">
+            <strong>✅ Deployment Successful!</strong><br>
+            Your application is now live and running on Vercel.
+        </div>
+        
+        <h2>Available API Endpoints:</h2>
+        <div class="api-links">
+            <a href="/test" class="api-link">Test Endpoint</a>
+            <a href="/analytics" class="api-link">Analytics</a>
+        </div>
+        
+        <h2>How to Use:</h2>
+        <p>Send a POST request to <code>/recommend</code> with a JSON body:</p>
+        <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;">
+{
+  "prompt": "comfortable chair for office"
+}
+        </pre>
+        
+        <p><strong>Note:</strong> The React frontend is being served from the build directory. If you need the full React app, make sure the frontend build is properly configured.</p>
+    </div>
+</body>
+</html>
