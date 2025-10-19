@@ -12,7 +12,8 @@ const AnalyticsPage = () => {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const API_URL = '${process.env.REACT_APP_API_URL}/analytics';
+        // ✅ THIS IS THE CORRECTED LINE (using backticks ``)
+        const API_URL = `${process.env.REACT_APP_API_URL}/analytics`;
         const response = await axios.get(API_URL);
         setAnalytics(response.data);
       } catch (err) {
@@ -132,7 +133,6 @@ const AnalyticsPage = () => {
         <p className="analytics-subtitle">Insights into your furniture collection</p>
       </div>
 
-      {/* Key Statistics */}
       <div className="stats-grid">
         <StatCard
           title="Total Products"
@@ -164,7 +164,6 @@ const AnalyticsPage = () => {
         />
       </div>
 
-      {/* Charts Grid */}
       <div className="charts-grid">
         <div className="chart-section">
           <BarChart 
@@ -183,12 +182,10 @@ const AnalyticsPage = () => {
         </div>
       </div>
 
-      {/* Price Analysis */}
       <div className="price-analysis">
         <PriceRangeChart priceStats={analytics?.price_stats} />
       </div>
 
-      {/* Detailed Tables */}
       <div className="tables-grid">
         <div className="table-container">
           <h3 className="table-title">Brand Breakdown</h3>

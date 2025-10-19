@@ -11,15 +11,13 @@ const RecommendationPage = () => {
   const [error, setError] = useState('');
   const [hasSearched, setHasSearched] = useState(false);
 
-  // 🔹 Helper function to parse image string
   const getFirstImage = (imagesString) => {
     if (!imagesString) return '';
     try {
-      // Convert stringified Python list to valid JSON
       const urls = JSON.parse(
         imagesString
-          .replace(/'/g, '"') // replace single quotes with double quotes
-          .replace(/\s+/g, '') // remove extra spaces
+          .replace(/'/g, '"')
+          .replace(/\s+/g, '')
       );
       return urls[0] || '';
     } catch (e) {
@@ -41,7 +39,8 @@ const RecommendationPage = () => {
     setHasSearched(true);
 
     try {
-      const API_URL = '${process.env.REACT_APP_API_URL}/recommend';
+      // ✅ THIS IS THE CORRECTED LINE (using backticks ``)
+      const API_URL = `${process.env.REACT_APP_API_URL}/recommend`;
       const response = await axios.post(API_URL, { prompt });
       setRecommendations(response.data.recommendations);
     } catch (err) {

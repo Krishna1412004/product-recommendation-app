@@ -19,9 +19,12 @@ load_dotenv()
 # --- 2. SET UP APPLICATION ---
 app = FastAPI()
 
+# in backend/main.py
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for production
+    # ✅ This allows your live Vercel frontend to communicate with the backend
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
