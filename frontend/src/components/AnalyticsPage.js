@@ -12,7 +12,7 @@ const AnalyticsPage = () => {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const API_URL = '/api/analytics';
+        const API_URL = 'http://127.0.0.1:8000/analytics';
         const response = await axios.get(API_URL);
         setAnalytics(response.data);
       } catch (err) {
